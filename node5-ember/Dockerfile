@@ -16,6 +16,7 @@ RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
 RUN set -ex \
 	&& buildDeps=' \
   nodejs \
+  openssh-client \
   ' \
 	&& apt-get update \
 	&& apt-get install -y $buildDeps \
@@ -23,10 +24,10 @@ RUN set -ex \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Set npm configs
+# Set npm/bower configs
 ENV npm_config_spin false
 ENV npm_config_cache /cache/node_cache/
-ENV npm_config_progress false
+# ENV npm_config_progress false
 ENV npm_config_cache-min 86400
 
 ENV bower_storage__packages=/cache/bower_cache/
