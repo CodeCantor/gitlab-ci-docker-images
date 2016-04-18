@@ -9,7 +9,7 @@ RUN set -ex \
   git \
   ' \
 	&& apt-get update \
-	&& apt-get install -y --no-install-recommends $runDeps \
+	&& apt-get install -y --no-install-recommends $runDeps
 
 # Add nodejs repo
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
@@ -18,27 +18,27 @@ RUN set -ex \
   nodejs \
   ' \
 	&& apt-get update \
-	&& apt-get install -y --no-install-recommends $buildDeps \
+	&& apt-get install -y $buildDeps \
   # cleanup
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# add SSH private key
-ADD utils/add_ssh_private_key.sh /usr/bin/add_ssh_private_key
-
-# add watermark script -> show platform versions
-ADD utils/watermark.sh /usr/bin/watermark
-
 # Set npm configs
-RUN npm config set spin false --global
-RUN npm config set cache /cache/node_cache/ --global
-RUN npm config set progress false --global
-RUN npm config set cache-min 86400 --global
+ENV npm_config_spin false
+ENV npm_config_cache /cache/node_cache/
+ENV npm_config_progress false
+ENV npm_config_cache-min 86400
 
 ENV bower_storage__packages=/cache/bower_cache/
 
 RUN npm install bower --global
 RUN npm install ember-cli --global
+
+# add SSH private key
+ADD add_ssh_private_key.sh /usr/bin/add_ssh_private_key
+
+# add watermark script -> show platform versions
+ADD watermark.sh /usr/bin/watermark
 
 # WORKDIR /usr/src/app
 ONBUILD WORKDIR $CI_PROJECT_DIR
