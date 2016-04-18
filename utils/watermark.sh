@@ -6,8 +6,7 @@ for command in  'chromium' \
 'node' 'npm' 'bower' 'ember'
 do
 {
-  #which $command > /dev/null && echo "`$command: $command -v` at `which $command`"
-  which $command > /dev/null && echo "$command: `$command --version`"
+  which $command > /dev/null && echo "$command: $($command --version)"
 }
 done
 
