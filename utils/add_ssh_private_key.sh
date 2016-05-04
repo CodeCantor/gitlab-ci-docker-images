@@ -7,7 +7,6 @@ if [ -n "$SSH_PRIVATE_KEY" ]; then
   eval $(ssh-agent -s)
   ssh-add <(echo "$SSH_PRIVATE_KEY")
   mkdir -p ~/.ssh
-  [[ -f /.dockerinit  ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
   echo "-> SSH_PRIVATE_KEY added successfully."
 else

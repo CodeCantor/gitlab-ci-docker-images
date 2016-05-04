@@ -1,13 +1,16 @@
-
+#! /usr/bin/env bash
 
 ORGANIZATION="codecantor"
 PREFIX="gitlab-ci-builds"
-NAME="node5-ember"
 TAG=latest
 
+for NAME in "node5-ember"
+do
 # Copy utilities
-cp ./utils/* ./$NAME/
+mkdir -p ./$NAME/utils/
+cp ./utils/* ./$NAME/utils/
 
-docker build -t $ORGANIZATION/$PREFIX-$NAME:$TAG node5-ember/
-
+docker build -t $ORGANIZATION/$PREFIX-$NAME:$TAG $NAME/
 docker push $ORGANIZATION/$PREFIX-$NAME:$TAG
+
+done

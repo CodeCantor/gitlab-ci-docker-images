@@ -7,6 +7,7 @@ RUN set -ex \
 	&& runDeps=' \
   curl \
   git \
+  openssh-client \
   ' \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends $runDeps
@@ -16,7 +17,6 @@ RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
 RUN set -ex \
 	&& buildDeps=' \
   nodejs \
-  openssh-client \
   ' \
 	&& apt-get update \
 	&& apt-get install -y $buildDeps \
@@ -27,7 +27,7 @@ RUN set -ex \
 # Set npm/bower configs
 ENV npm_config_spin false
 ENV npm_config_cache /cache/node_cache/
-# ENV npm_config_progress false
+ENV npm_config_progress false
 ENV npm_config_cache-min 86400
 
 ENV bower_storage__packages=/cache/bower_cache/
@@ -36,10 +36,10 @@ RUN npm install bower --global
 RUN npm install ember-cli --global
 
 # add SSH private key
-ADD add_ssh_private_key.sh /usr/bin/add_ssh_private_key
+ADD utils/add_ssh_private_key.sh /usr/bin/add_ssh_private_key
 
 # add watermark script -> show platform versions
-ADD watermark.sh /usr/bin/watermark
+ADD utils/watermark.sh /usr/bin/watermark
 
 # WORKDIR /usr/src/app
 ONBUILD WORKDIR $CI_PROJECT_DIR
