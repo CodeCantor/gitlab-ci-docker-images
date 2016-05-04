@@ -31,6 +31,8 @@ ENV npm_config_progress false
 ENV npm_config_cache-min 86400
 
 ENV bower_storage__packages=/cache/bower_cache/
+# Allow bower to run as root user
+ENV bower_allow_root=true
 
 RUN npm install bower --global
 RUN npm install ember-cli --global
