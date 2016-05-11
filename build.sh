@@ -10,7 +10,7 @@ do
 mkdir -p ./$NAME/utils/
 cp ./utils/* ./$NAME/utils/
 
-docker build -t $ORGANIZATION/$PREFIX-$NAME:$TAG $NAME/
+docker build --no-cache -t $ORGANIZATION/$PREFIX-$NAME:$TAG $NAME/
 docker push $ORGANIZATION/$PREFIX-$NAME:$TAG
 
 done
