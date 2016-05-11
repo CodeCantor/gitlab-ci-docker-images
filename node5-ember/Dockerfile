@@ -28,7 +28,7 @@ RUN set -ex \
 ENV npm_config_spin false
 ENV npm_config_cache /cache/node_cache/
 ENV npm_config_progress false
-ENV npm_config_cache-min 86400
+ENV npm_config_cache-min 43200
 
 ENV bower_storage__packages=/cache/bower_cache/
 # Allow bower to run as root user
