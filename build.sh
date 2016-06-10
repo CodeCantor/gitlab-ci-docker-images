@@ -4,7 +4,12 @@ ORGANIZATION="codecantor"
 PREFIX="gitlab-ci-builds"
 TAG=latest
 
-IMAGES="ruby2.3 node5-ember"
+if [ -n "$1" ]
+then
+  IMAGES="$1"
+else
+  IMAGES="ruby2.3 node5-ember"
+fi
 
 for NAME in $IMAGES
 do
