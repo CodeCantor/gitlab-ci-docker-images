@@ -9,8 +9,11 @@ IMAGES="ruby2.3 node5-ember"
 for NAME in $IMAGES
 do
 # Copy utilities
-mkdir -p ./$NAME/utils/
-cp ./utils/* ./$NAME/utils/
+if [ -d ./$NAME ]
+then
+  mkdir -p ./$NAME/utils/
+  cp ./utils/* ./$NAME/utils/
+fi
 
 echo "Building Docker image: $ORGANIZATION/$PREFIX-$NAME:$TAG"
 
