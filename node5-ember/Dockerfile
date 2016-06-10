@@ -24,6 +24,8 @@ RUN set -ex \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN mkdir -p /cache/node_cache/
+RUN mkdir -p /cache/bower_cache/
 # Set npm/bower configs
 ENV npm_config_spin false
 ENV npm_config_cache /cache/node_cache/
