@@ -40,10 +40,10 @@ RUN npm install bower --global
 RUN npm install ember-cli --global
 
 # add SSH private key
-ADD utils/add_ssh_private_key.sh /usr/bin/add_ssh_private_key
+COPY utils/add_ssh_private_key.sh /usr/bin/add_ssh_private_key
 
 # add watermark script -> show platform versions
-ADD utils/watermark.sh /usr/bin/watermark
+COPY utils/watermark.sh /usr/bin/watermark
 
 # WORKDIR /usr/src/app
 ONBUILD WORKDIR $CI_PROJECT_DIR

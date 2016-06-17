@@ -54,9 +54,9 @@ RUN gem install capybara-webkit
 ENV DISPLAY ":99"
 
 # add SSH private key
-ADD utils/add_ssh_private_key.sh /usr/bin/add_ssh_private_key
+COPY utils/add_ssh_private_key.sh /usr/bin/add_ssh_private_key
 
 # add watermark script -> show platform versions
-ADD utils/watermark.sh /usr/bin/watermark
+COPY utils/watermark.sh /usr/bin/watermark
 
 ONBUILD WORKDIR $CI_PROJECT_DIR
