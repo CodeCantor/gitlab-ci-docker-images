@@ -20,6 +20,9 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN set -ex \
     && buildDeps=' \
     ruby \
+    ruby-dev \
+    build-essential \
+    patch \
     nodejs \
     npm \
     ' \
