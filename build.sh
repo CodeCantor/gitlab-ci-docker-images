@@ -8,7 +8,7 @@ if [ -n "$1" ]
 then
   IMAGES="$1"
 else
-  IMAGES="ruby2.3 node5-ember"
+  IMAGES="ruby2.3 node5-ember node-ruby-sass"
 fi
 
 for NAME in $IMAGES
