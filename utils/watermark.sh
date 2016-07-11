@@ -3,7 +3,7 @@
 for command in  'chromium' \
 'ruby' 'gem' 'bundle' \
 'python' 'pip' \
-'node' 'npm' 'bower' 'ember'
+'node' 'npm' 'bower' 'ember' 'grunt' 'gulp'
 do
 {
   which $command > /dev/null && echo "$command: $($command --version)"

@@ -58,7 +58,9 @@ ENV bower_storage__packages=/cache/bower_cache/
 ENV bower_allow_root=true
 
 RUN mkdir -p /cache/bower_cache/ \
-    && npm install bower --global
+    && npm install bower --global \
+    && npm install grunt-cli --global \
+    && npm install gulp-cli --global
 
 # add SSH private key
 COPY utils/add_ssh_private_key.sh /usr/bin/add_ssh_private_key
