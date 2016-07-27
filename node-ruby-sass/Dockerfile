@@ -33,6 +33,7 @@ RUN set -ex \
     build-essential \
     patch \
     file \
+    fontconfig \
     ' \
     && apt-get update \
     && apt-get install -y $buildDeps \
